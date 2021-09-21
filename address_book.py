@@ -1,4 +1,6 @@
+from contacts import Contact
 if __name__ == '__main__':
+    contacts = []
     user_input = ""
     while user_input != "q":
         print("1 - Enter a contact")
@@ -15,5 +17,10 @@ if __name__ == '__main__':
             zip = input("Enter zip code \n")
             phone_number = input("Enter phone number \n")
             email = input("Enter email address \n")
+            our_contact = Contact(first_name, last_name, address, city, state, zip, phone_number, email)
+            contacts.append(our_contact)
+        elif user_input == "2":
+            for contact in contacts:
+                print(contact)
         else:
             break
