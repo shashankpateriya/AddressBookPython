@@ -39,5 +39,10 @@ if __name__ == '__main__':
                     new_contact = Contact(new_first_name, new_last_name, new_address, new_city, new_state,
                                       new_zip, new_phone_number, new_email)
                     contacts.append(new_contact)
-                else:
-                    break
+        elif user_input == "4":
+            to_delete = input("Enter contact's name to lookup\n")
+            for contact in contacts:
+                if to_delete in contact.full_name():
+                    contacts.remove(contact)
+        else:
+            break
