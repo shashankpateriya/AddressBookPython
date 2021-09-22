@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import logging
 import pandas
 from contacts import Contact
@@ -68,3 +69,31 @@ if __name__ == '__main__':
             for contact in contacts:
                 f.write(f"{contact.first_name},{contact.last_name},{contact.address},{contact.city},{contact.state}"
                         f"{contact.zip},{contact.phone_number},{contact.email}\n")
+=======
+from contacts import Contact
+if __name__ == '__main__':
+    contacts = []
+    user_input = ""
+    while user_input != "q":
+        print("1 - Enter a contact")
+        print("2 - Display contacts")
+        print("q - quit program")
+        user_input = input("Select option: ")
+        if user_input == "1":
+            print("Enter contact information")
+            first_name = input("Enter first name \n")
+            last_name = input("Enter last name \n")
+            address = input("Enter address \n")
+            city = input("Enter city \n")
+            state = input("Enter state \n")
+            zip = input("Enter zip code \n")
+            phone_number = input("Enter phone number \n")
+            email = input("Enter email address \n")
+            our_contact = Contact(first_name, last_name, address, city, state, zip, phone_number, email)
+            contacts.append(our_contact)
+        elif user_input == "2":
+            for contact in contacts:
+                print(contact)
+        else:
+            break
+>>>>>>> d702b92f69ed35e1a490a2b881f74bb530f5cd4f
