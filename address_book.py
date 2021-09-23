@@ -24,7 +24,6 @@ if __name__ == '__main__':
             print("2 - Display contacts")
             print("3 - Edit a contact")
             print("4 - Delete a contact")
-            print("5 - Store in CSV file")
             print("q - quit program")
             try:
                 user_choice = input("Select option: ")
@@ -39,9 +38,6 @@ if __name__ == '__main__':
 
                 elif user_choice == "4":
                     console_service.delete_contact()
-
-                elif user_choice == "5":
-                    console_service.write_in_csv()
 
                 elif user_choice == "q":
                     print("Thanks for using us ")
