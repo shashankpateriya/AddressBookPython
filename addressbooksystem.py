@@ -1,5 +1,6 @@
 from contacts import Contact
 import pandas as pd
+import json
 
 
 class AddressBookSystem:
@@ -36,9 +37,19 @@ class AddressBookSystem:
         print("contact created")
         address_book_name = input("Enter the address book name \n")
         address_book = self.address_book_contacts.get(address_book_name)
-        if address_book == None:
+        if address_book is None:
             contact_list = [contact]
             self.address_book_contacts[address_book_name] = contact_list
+            for contact in contact_list:
+                df = pd.DataFrame({'first name': [contact.first_name],
+                                   'last name': [contact.last_name],
+                                   'address': [contact.address],
+                                   'city': [contact.city],
+                                   'state': [contact.state],
+                                   'zip': [contact.zip],
+                                   'phone number': [contact.phone_number],
+                                   'email': [contact.email]})
+                df.to_csv('contactsdata.csv', mode='a', header=False, index=False)
         else:
             address_book.append(contact)
 
@@ -74,16 +85,3 @@ class AddressBookSystem:
                 print("Contact removed sucessfully")
         else:
             print("No such address book")
-
-    def write_in_csv(self):
-        # with open("contactsdata.csv", "w") as f:
-        #     for address_book in self.address_book_contacts:
-        #         contacts = "\n".join(str(contact) for contact in self.address_book_contacts.get(address_book))
-        #         f.write(f"Contacts in {address_book} are \n{contacts}")
-
-        for address_book in self.address_book_contacts:
-            contacts = "\n".join(str(contact) for contact in self.address_book_contacts.get(address_book))
-            # f.write(f"Contacts in {address_book} are \n{contacts}")
-            df = pd.DataFrame(list(f"Contacts in {address_book} are \n{contacts}\n"))
-            df.to_csv('contactsdata.csv', mode='a', header=False, index=None)
-
